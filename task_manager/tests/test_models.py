@@ -8,7 +8,7 @@ class ModelsTests(TestCase):
     def test_project_str(self):
         project = Project.objects.create(
             name="Test",
-            registration_number="1",
+            registration_number="542355",
             address="Test"
         )
         self.assertEqual(
@@ -48,7 +48,7 @@ class ModelsTests(TestCase):
     def test_task_str(self):
         project = Project.objects.create(
             name="Test",
-            registration_number="1",
+            registration_number="78951",
             address="Test"
         )
         type_of_work = TypeOfWork.objects.create(

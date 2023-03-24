@@ -1,3 +1,5 @@
+import os
+import uuid
 from django.conf import settings
 from django.contrib.auth.models import AbstractUser
 from django.db import models
@@ -35,6 +37,13 @@ class Position(models.Model):
         return self.name
 
 
+def image_file(instance, filename):
+    _, extension = os.path.splitext(filename)
+
+    filename = f"{instance.username}-{uuid.uuid4()}.{extension}"
+    return os.path.join("uploads/avatar/", filename)
+
+
 class Employee(AbstractUser):
     phone_number = models.CharField(max_length=13, blank=True, default="", )
     position = models.ForeignKey(
@@ -43,6 +52,7 @@ class Employee(AbstractUser):
         default="1"
     )
     number_of_completed_tasks = models.IntegerField(default=0)
+    avatar = models.ImageField(null=True, upload_to=image_file)
 
     @property
     def full_name(self):

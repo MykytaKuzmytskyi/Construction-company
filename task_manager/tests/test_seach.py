@@ -28,12 +28,12 @@ class ModelsTests(TestCase):
 
         project1 = Project.objects.create(
             name="House",
-            registration_number="1",
+            registration_number="2525",
             address="address1"
         )
         project2 = Project.objects.create(
             name="Hotel",
-            registration_number="2",
+            registration_number="5252",
             address="address2"
         )
         type_of_work = TypeOfWork.objects.create(name="Test")
