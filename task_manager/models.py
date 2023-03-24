@@ -55,6 +55,11 @@ class Employee(AbstractUser):
     avatar = models.ImageField(null=True, upload_to=image_file)
 
     @property
+    def avatar_url(self):
+        if self.avatar and hasattr(self.avatar, 'url'):
+            return self.avatar.url
+
+    @property
     def full_name(self):
         return self.first_name + " " + self.last_name
 
