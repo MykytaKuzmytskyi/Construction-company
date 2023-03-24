@@ -1,8 +1,12 @@
+import os
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 from django.core.validators import MaxLengthValidator, MinLengthValidator
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
+
 from task_manager.models import Employee, Task, Project
 
 
@@ -45,7 +49,23 @@ class EmployeeUpdateForm(forms.ModelForm):
             "first_name",
             "last_name",
             "phone_number",
+            "avatar",
         ]
+
+    @receiver(pre_save)
+    def pre_save_image(sender, instance, *args, **kwargs):
+        """ instance old image file will delete from os """
+        try:
+            old_avatar = instance.__class__.objects.get(id=instance.id).avatar.path
+            try:
+                new_avatar = instance.image.path
+            except:
+                new_avatar = None
+            if new_avatar != old_avatar:
+                if os.path.exists(old_avatar):
+                    os.remove(old_avatar)
+        except:
+            pass
 
 
 class EmployeesSearchForm(forms.Form):

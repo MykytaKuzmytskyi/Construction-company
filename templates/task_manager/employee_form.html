@@ -3,7 +3,7 @@
 
 {% block content %}
 
-    <form action="" method="post" novalidate>
+    <form action="" method="post" novalidate enctype="multipart/form-data">
     {% csrf_token %}
     {{ form|crispy }}
 
