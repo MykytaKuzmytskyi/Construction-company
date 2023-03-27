@@ -32,15 +32,16 @@ class PrivateDriverTest(TestCase):
             first_name="first1",
             last_name="last1",
             email="admin@admin.com",
+            avatar="avatar.png"
         )
         self.client.force_login(self.user)
 
     def test_update_employee(self):
         form_data = {
-            "email": "admin@ad.com",
+            "email": "admin@admin.com",
             "first_name": "first2",
             "last_name": "last2",
-            "phone_number": "+380677999213"
+            "phone_number": "+380677999213",
         }
         self.client.post(reverse("task_manager:employee-update", args=(self.user.id,)), data=form_data)
         updated_user = get_user_model().objects.get(username="admin")
