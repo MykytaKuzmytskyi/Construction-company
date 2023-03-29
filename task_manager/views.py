@@ -12,7 +12,8 @@ from task_manager.forms import (
     ProjectsSearchForm,
     TaskForm,
     ProjectsCreateForm,
-    EmployeesSearchForm, TaskSearchForm
+    EmployeesSearchForm,
+    TaskSearchForm
 )
 from task_manager.models import Employee, Project, Task
 
@@ -26,9 +27,9 @@ def index(request):
     incomplete_tasks = Task.objects.filter(
         is_completed=False
     ).count()
-    completed_tasks = Employee.objects.aggregate(
-        completed_tasks=Sum("number_of_completed_tasks")
-    )
+    completed_tasks = Task.objects.filter(
+        is_completed=True
+    ).count()
 
     num_visits = request.session.get("num_visits", 0)
     request.session["num_visits"] = num_visits + 1
@@ -37,7 +38,7 @@ def index(request):
         "num_employees": num_employees,
         "num_projects": num_projects,
         "num_tasks": incomplete_tasks,
-        "completed_tasks": completed_tasks["completed_tasks"],
+        "completed_tasks": completed_tasks,
         "num_visits": num_visits + 1,
     }
 
@@ -201,26 +202,11 @@ class TaskDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 
 @login_required
-def toggle_assign_to_task(request, pk):
-    employee = Employee.objects.get(id=request.user.id)
-    if (
-            Task.objects.get(id=pk) in employee.tasks.all()
-    ):  # probably could check if task exists
-        employee.tasks.remove(pk)
-    else:
-        employee.tasks.add(pk)
-    return HttpResponseRedirect(
-        reverse_lazy("task_manager:task-detail", args=[pk])
-    )
-
-
-@login_required
 def closing_task(request, pk):
     task = Task.objects.get(id=pk)
     employee = Employee.objects.get(id=request.user.id)
     if task.is_completed is False:
         task.is_completed = True
-        employee.number_of_completed_tasks += 1
         task.save()
         employee.save()
     return HttpResponseRedirect(

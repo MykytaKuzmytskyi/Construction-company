@@ -622,7 +622,6 @@
       "date_joined": "2023-03-10T21:03:13.279Z",
       "phone_number": "+380677999213",
       "position": 1,
-      "number_of_completed_tasks": 0,
       "groups": [],
       "user_permissions": []
     }
@@ -643,7 +642,6 @@
       "date_joined": "2023-03-10T21:03:13.279Z",
       "phone_number": "+380678969223",
       "position": 2,
-      "number_of_completed_tasks": 0,
       "groups": [],
       "user_permissions": []
     }
@@ -664,7 +662,6 @@
       "date_joined": "2023-03-10T21:03:13.279Z",
       "phone_number": "+380667981217",
       "position": 3,
-      "number_of_completed_tasks": 0,
       "groups": [],
       "user_permissions": []
     }
@@ -685,7 +682,6 @@
       "date_joined": "2023-03-10T21:03:13.279Z",
       "phone_number": "+380997979123",
       "position": 5,
-      "number_of_completed_tasks": 0,
       "groups": [],
       "user_permissions": []
     }
@@ -706,7 +702,6 @@
       "date_joined": "2023-03-10T21:03:13.279Z",
       "phone_number": "+380987876143",
       "position": 3,
-      "number_of_completed_tasks": 0,
       "groups": [],
       "user_permissions": []
     }
@@ -727,7 +722,6 @@
       "date_joined": "2023-03-10T21:03:13.279Z",
       "phone_number": "+380667978523",
       "position": 6,
-      "number_of_completed_tasks": 0,
       "groups": [],
       "user_permissions": []
     }
@@ -748,7 +742,6 @@
       "date_joined": "2023-03-10T21:03:13.279Z",
       "phone_number": "+380997745125",
       "position": 3,
-      "number_of_completed_tasks": 0,
       "groups": [],
       "user_permissions": []
     }
@@ -769,7 +762,6 @@
       "date_joined": "2023-03-10T21:03:13.279Z",
       "phone_number": "+38067852193",
       "position": 4,
-      "number_of_completed_tasks": 0,
       "groups": [],
       "user_permissions": []
     }

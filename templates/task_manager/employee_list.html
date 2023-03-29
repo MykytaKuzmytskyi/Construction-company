@@ -62,7 +62,7 @@
             <td><span class="badge badge-secondary">{{ employee.position }}</span></td>
             <td>{{ employee.email }}</td>
             <td>{{ employee.tasks.all.count }}</td>
-            <td>{{ employee.number_of_completed_tasks }}</td>
+            <td>{{ employee.completed_tasks }}</td>
 
             {% if user.is_superuser %}
               <td>
