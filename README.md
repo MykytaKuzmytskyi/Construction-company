@@ -25,7 +25,7 @@ Opportunities for the regular user (employee):
 
 ```bash
 git clone https://github.com/Thirteenthskyi/Construction-company.git
-cd construction-company
+cd Сonstruction-company
 ```
 
 2. Install modules and dependencies:

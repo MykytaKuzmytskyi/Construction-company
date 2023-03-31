@@ -56,7 +56,9 @@ class EmployeeUpdateForm(forms.ModelForm):
     def pre_save_image(sender, instance, *args, **kwargs):
         """ instance old image file will delete from os """
         try:
-            old_avatar = instance.__class__.objects.get(id=instance.id).avatar.path
+            old_avatar = instance.__class__.objects.get(
+                id=instance.id
+            ).avatar.path
             try:
                 new_avatar = instance.image.path
             except:

@@ -37,22 +37,23 @@ class Position(models.Model):
         return self.name
 
 
-def image_file(instance, filename):
-    _, extension = os.path.splitext(filename)
-
-    filename = f"{instance.username}-{uuid.uuid4()}.{extension}"
-    return os.path.join("uploads/avatar/", filename)
-
-
 class Employee(AbstractUser):
     phone_number = models.CharField(max_length=13, blank=True, default="", )
     position = models.ForeignKey(
         "Position",
         on_delete=models.CASCADE,
-        default="1"
+        null=True,
     )
-    number_of_completed_tasks = models.IntegerField(default=0)
-    avatar = models.ImageField(null=True, upload_to=image_file)
+    avatar = models.ImageField(null=True)
+
+    @property
+    def completed_tasks(self):
+        return self.tasks.filter(is_completed=True).count()
+
+    @property
+    def avatar_url(self):
+        if self.avatar and hasattr(self.avatar, "url"):
+            return self.avatar.url
 
     @property
     def full_name(self):

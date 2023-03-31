@@ -6,7 +6,12 @@
     <div class="col-lg-4">
       <div class="card mb-4">
         <div class="card-body text-center">
-          <img src="{{ employee.avatar.url }}" />
+          {% if employee.avatar %}
+            <img src="{{ employee.avatar_url }}" />
+          {% else %}
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+            class="rounded-circle img-fluid" style="width: 150px;">
+          {% endif %}
           <h5 class="my-3">{{ employee.username }}</h5>
           <p class="text-muted mb-1">{{ employee.position }}</p>
 
@@ -55,7 +60,7 @@
               <p class="mb-0">Completed tasks</p>
             </div>
             <div class="col-sm-9">
-              <p class="text-muted mb-0">{{ employee.number_of_completed_tasks }}</p>
+              <p class="text-muted mb-0">{{ employee.completed_tasks }}</p>
             </div>
           </div>
           <hr>
