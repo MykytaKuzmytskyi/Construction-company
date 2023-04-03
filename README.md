@@ -54,6 +54,7 @@ python manage.py migrate
 ```bash
 python manage.py runserver
 ```
+👉 [Link to the deployed project on the server](https://construction-company.onrender.com) - `LIVE Demo`
 
 - You can use following superuser (or create another one by yourself using the admin page):
     - Login: `admin.user`
